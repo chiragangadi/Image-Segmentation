@@ -1,4 +1,6 @@
 # Convex architecture neural network
+import torch
+import torch.nn as nn
 class NetConvex(nn.Module):
     def __init__(self):
         super(NetConvex, self).__init__()

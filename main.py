@@ -1,3 +1,8 @@
+import torch
+import torch.nn as nn
+from torch.utils.data import DataLoader, TensorDataset
+from torch import Tensor
+import torch.optim as optim
 import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image
@@ -18,7 +23,7 @@ plt.figure(figsize=(5,10))
 
 
 # Extracting information (i.e x,y,R,G,B) from scribbled part of image
-img_dir="Original image..jpg"
+img_dir="Original image.jpg"
 img_pil=Image.open(img_dir)
 img= np.array(img_pil, dtype='float')/255.0
 img = img[:,:,0:3]
@@ -53,11 +58,6 @@ labels = torch.from_numpy(labels).float()
 
 
 # Training Fully connected neural network
-import torch
-import torch.nn as nn
-from torch.utils.data import DataLoader, TensorDataset
-from torch import Tensor
-import torch.optim as optim
 
 # Dataloader 
 dataset = TensorDataset(Tensor(inputs), Tensor(labels))
@@ -136,7 +136,7 @@ inputs_C = image_data_C.T[:, :-1]
 labels_C = image_data_C.T[:, -1]
 inputs_C = torch.from_numpy(inputs_C).float()
 labels_C = torch.from_numpy(labels_C).float()
-labels_C = labels_1_C.view(-1, 1)
+labels_C = labels_C.view(-1, 1)
 
 
 # Training convex neural network architecture
